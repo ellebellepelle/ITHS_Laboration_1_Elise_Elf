@@ -5,5 +5,57 @@ package me.ellebelle;
 public class Main {
     static void main() {
 
+        boolean condition = true;
+        do {
+            System.out.println("""
+                    ======================================================
+                    Välkommen till Bibliotekshanteraren!
+                    Var god gör ditt menyval:
+                    ======================================================
+                    1. Lägg till bok.
+                    2. Registrera medlem.
+                    3. Låna bok.
+                    4. Lämna tillbaka bok.
+                    5. Sök bok (titel eller författare, del av eller hela ordet.).
+                    6. Visa alla böcker.
+                    7. Avsluta.
+                    """);
+
+            try {
+
+                int userInput = Integer.parseInt(IO.readln());
+
+                switch (userInput) {
+                    case 1:
+                        System.out.println("val 1");
+                        break;
+                    case 2:
+                        System.out.println("val 2");
+                        break;
+                    case 3:
+                        System.out.println("val 3");
+                        break;
+                    case 4:
+                        System.out.println("val 4");
+                        break;
+                    case 5:
+                        System.out.println("val 5");
+                        break;
+                    case 6:
+                        System.out.println("val 6");
+                        break;
+                    case 7:
+                        System.out.println("Du har valt att avsluta programmet. \n" +
+                                "tack för idag och välkommen åter.");
+                        condition = false;
+                        break;
+                    default:
+                        System.out.println("Ogilltigt val, vg. välj 1-7");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Ogilltigt val, du måste skriva ett heltal mellan 1-7.");
+            }
+        } while (condition);
     }
 }
