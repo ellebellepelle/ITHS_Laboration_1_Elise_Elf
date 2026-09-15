@@ -1,4 +1,4 @@
-1.  Gör en meny men en do-while-loop som frågar användaren om vilket menyval hen vill göra.
+✅ 1.  Gör en meny men en do-while-loop som frågar användaren om vilket menyval hen vill göra.
     En tyr-catch som fongar exceptions om användaren skriver annat än siffror.
     En switch-case-brake för menyvalen och dess metoder.
 
@@ -27,7 +27,7 @@ Jag behöver:
         * array/struktur som håller reda på vilka böcker som är utlånade och till vem
         (samt böcker, medlemmar och utlåningsinformationen.)
 
-* Sen gör jag en record som heter:
+✅ * Sen gör jag en record som heter:
         public record Book(String isbn, String title, String author, int pages) {}
 
 * Sen gör jag en klass som heter:
