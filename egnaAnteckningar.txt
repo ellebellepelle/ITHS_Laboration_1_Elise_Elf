@@ -30,17 +30,17 @@ Jag behöver:
 ✅ * Sen gör jag en record som heter:
         public record Book(String isbn, String title, String author, int pages) {}
 
-* Sen gör jag en klass som heter:
+✅ * Sen gör jag en klass som heter:
         public class Member{}
 
         * där i finns :
-            * int id = 0;
-            * String name = "";
-            * int activeLone = 0;
+            * int id;
+            * String name;
+            * int activeLones = 0;
 
-            * konstruktor med dessa tre inparametrar
+            * konstruktor med två inparametrar
 
-            * get-metoder för att hämta infon
+            * get- och set-metoder för att hämta infon på de jag behöver.
 
             * boolean-metod som säger om member får låna fler böcker
 
