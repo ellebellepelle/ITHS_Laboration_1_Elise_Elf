@@ -45,8 +45,6 @@ public class Main {
                         System.out.println("val 6");
                         break;
                     case 7:
-                        System.out.println("Du har valt att avsluta programmet. \n" +
-                                "tack för idag och välkommen åter.");
                         condition = false;
                         break;
                     default:

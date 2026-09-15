@@ -1,0 +1,72 @@
+1.  Gör en meny men en do-while-loop som frågar användaren om vilket menyval hen vill göra.
+    En tyr-catch som fongar exceptions om användaren skriver annat än siffror.
+    En switch-case-brake för menyvalen och dess metoder.
+
+======= EV. ÄNDRA TILL SCANNER ========
+
+Jag behöver:
+* En record som representerar en bok
+* En klass som representerar en medlem
+* En klass (Library, huvudklassen som sköter själva biblioteket) som håller arrayer med böcker och medlemmar (fast storlek),
+  samt en array/struktur som håller reda på vilka böcker som är utlånade och till vem.
+
+  ===================================================================================================================
+
+
+* Om jag gör en Library-klass (public class Library{}) som innehåller:
+        * Library.addBook() -- lägg till ny bok
+        * Library.registerMember() -- registrera en ny medlem
+        * Library.borrowBook() -- låna en bok, kontrollera att boken finns och inte redan är utlånad
+        * Library.returnBook() -- lämna tillbaka en bok
+        * Library.searchBookAuthor() -- sök på bok på (del av) titel eller författare
+                                        skiftlägesokänsligt, via egen sökloop (linjär sökning)
+        * Methods.showBooksAndStatus() -- visa samtliga böcker med status (utlånad/tillgänglig och till vem)
+
+        * array med members, fast storlek, arrayen skall hanteras om den blir full.
+        * array med books, fast storlek, arrayen skall hanteras om den blir full.
+        * array/struktur som håller reda på vilka böcker som är utlånade och till vem
+        (samt böcker, medlemmar och utlåningsinformationen.)
+
+* Sen gör jag en record som heter:
+        public record Book(String isbn, String title, String author, int pages) {}
+
+* Sen gör jag en klass som heter:
+        public class Member{}
+
+        * där i finns :
+            * int id = 0;
+            * String name = "";
+            * int activeLone = 0;
+
+            * konstruktor med dessa tre inparametrar
+
+            * get-metoder för att hämta infon
+
+            * boolean-metod som säger om member får låna fler böcker
+
+* FELHANTERING - på allt överallt ex.
+        * bok/medlem som inte hittas
+        * bok som redan är utlånad
+        * ogiltiga menyval
+        * Progammet skall aldrig krascha pga fel inmatning
+
+* Flera commits
+
+* Källkritik och reflektion: Skriv i projektets README.md en kort beskrivning av lösningen
+  samt en reflektion kring mina designval (tex. record kontra klass).
+
+=========== VG!! ============
+
+* Egen sorteringsalgoritm: implementera en egen sorteringsalgoritm (tex. bubble sort eller selection sort)
+  INTE Arrays.sort() eller Collections.sort() - som sorterar böckerna i bokstavsordning på titel för menyval 6.
+
+* Statistik:
+    en funktion som (utan Streams/Collections) hittar och visar den medlem som för tillfället har flest aktiva lån.
+
+* Dynamisk kapacitet:
+    om bok- eller medlemsarraen blir fulla ska programmet skapa en ny, större array,
+    kopiera över befintliga element och fortsätta (manuell array-väsling, utan att använda ArrayList).
+
+* Reflektion i README.md:
+    utöka reflektionen med en kort diskussion av varför/hur jag hade löst uppgiften enklare eller annorlunda
+    om Collections Framework redan var tillåtet - visa att jag förstår begränsningen som en medveten övning.
