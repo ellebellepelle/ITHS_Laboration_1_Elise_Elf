@@ -32,7 +32,7 @@ public class Main {
                         malmoLibrary.addBook();
                         break;
                     case 2:
-                        System.out.println("val 2");
+                        malmoLibrary.registerMember();
                         break;
                     case 3:
                         System.out.println("val 3");

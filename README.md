@@ -17,4 +17,5 @@
 * Lägger till metoden addBook() som anropas på mitt malmoLibrary-objekt i main-menyn och i Library-klassen.
 * Skapar ett malmoLibrary-objekt i Main-klassen som blir det jag arbetar med i projektet.
 ========= Commit ===========
+* Skapar registerMember() i Library-klassen 
 * 
