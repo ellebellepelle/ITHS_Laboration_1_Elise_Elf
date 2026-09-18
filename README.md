@@ -10,5 +10,11 @@
   om någon ex byter namn eller lånar fler böcker. 
   Id är dock final för att det inte skall kunna gå att ändra. Därmed behöver jag inte setId.
   Jag sätter activeLoans till 0 och har inte med den i konstruktorn eftersom att när en medlem skapas har den inga lån.
+
+======= Fredag 18/9 ========
+* Library-klassen får två Arrays med 10 platser var för att kunna lagra medlemmar och böcker.
+  samt fält för att räkna dess platser. 
+* Lägger till metoden addBook() som anropas på mitt malmoLibrary-objekt i main-menyn och i Library-klassen.
+* Skapar ett malmoLibrary-objekt i Main-klassen som blir det jag arbetar med i projektet.
+========= Commit ===========
 * 
-  

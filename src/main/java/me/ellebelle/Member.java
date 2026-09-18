@@ -3,7 +3,7 @@ package me.ellebelle;
 public class Member {
     private final int id;
     private String name;
-    private int activeLones = 0;
+    private int activeLoans = 0;
 
     public Member(int id, String name) {
         this.id = id;
@@ -22,15 +22,15 @@ public class Member {
         this.name = name;
     }
 
-    public int getActiveLones() {
-        return activeLones;
+    public int getActiveLoans() {
+        return activeLoans;
     }
 
-    public void setActiveLones(int activeLones) {
-        this.activeLones = activeLones;
+    public void setActiveLoans(int activeLoans) {
+        this.activeLoans = activeLoans;
     }
 
     public boolean maxNumOfBorroedBooks() {
-        return activeLones > 3;
+        return activeLoans > 3;
     }
 }

@@ -5,6 +5,8 @@ package me.ellebelle;
 public class Main {
     static void main() {
 
+        Library malmoLibrary = new Library();
+
         boolean condition = true;
         do {
             System.out.println("""
@@ -27,7 +29,7 @@ public class Main {
 
                 switch (userInput) {
                     case 1:
-                        System.out.println("val 1");
+                        malmoLibrary.addBook();
                         break;
                     case 2:
                         System.out.println("val 2");

@@ -1,5 +1,5 @@
 ✅ 1.  Gör en meny men en do-while-loop som frågar användaren om vilket menyval hen vill göra.
-    En tyr-catch som fongar exceptions om användaren skriver annat än siffror.
+    En tyr-catch som fångar exceptions om användaren skriver annat än siffror.
     En switch-case-brake för menyvalen och dess metoder.
 
 ======= EV. ÄNDRA TILL SCANNER ========
@@ -14,7 +14,7 @@ Jag behöver:
 
 
 * Om jag gör en Library-klass (public class Library{}) som innehåller:
-        * Library.addBook() -- lägg till ny bok
+       ✅ * Library.addBook() -- lägg till ny bok
         * Library.registerMember() -- registrera en ny medlem
         * Library.borrowBook() -- låna en bok, kontrollera att boken finns och inte redan är utlånad
         * Library.returnBook() -- lämna tillbaka en bok
