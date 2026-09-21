@@ -93,6 +93,17 @@ public class Library {
         // kontrollera om boken är tillgänglig
         // se till att bok och medlem på nått sätt blir ihopkopplade,, kanske en ny record?
     }
+
+
+    public Book findBook(String search) {
+        for (int i = 0; i < booksCounter; i++) {
+            if (books[i].title().toLowerCase().contains(search.toLowerCase())
+                || books[i].author().toLowerCase().contains(search.toLowerCase())) {
+                return books[i];
+            }
+        }
+        return null;
+    }
 }
 
 

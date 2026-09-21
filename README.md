@@ -24,6 +24,10 @@
   samt ett fält för att kunna räkna hur många platser som används.
 * Gör en record Loans för att få en koppling mellan bok och låntagare. 
 * Skapar borrowBook() i Library-klassen och lägger i main menyn
+========= Commit ===========
+* Skapar findBook() i Library-klassen för att kunna använda i både borrowBook() och i searchBook()
+* 
+
 
 
 
