@@ -26,7 +26,10 @@
 * Skapar borrowBook() i Library-klassen och lägger i main menyn
 ========= Commit ===========
 * Skapar findBook() i Library-klassen för att kunna använda i både borrowBook() och i searchBook()
+========= Commit ===========
+* Ändrar findBook() så att jag får tillbaka Book[] med alla sökträffar.
 * 
+
 
 
 

@@ -13,8 +13,7 @@ public class Library {
     public void addBook() {
         // Kontroll (före användarinmatning) för att inte överskrida arrayens längd.
         if (booksCounter >= books.length) {
-            System.out.println("Bibliotekets 10 platser i bokhyllan är fyllda." +
-                    "\n Det går ej lägga till fler böcker.");
+            System.out.println("Bibliotekets 10 platser i bokhyllan är fyllda." + "\n Det går ej lägga till fler böcker.");
             return;
         }
 
@@ -40,8 +39,7 @@ public class Library {
     public void registerMember() {
         // Kontroll (före användarinmatning) för att inte överskrida arrayens längd.
         if (membersCounter >= members.length) {
-            System.out.println("Vår medlemslista är full, välkommen åter när en av" +
-                    "\n våra 10 medlemmar har slutat.");
+            System.out.println("Vår medlemslista är full, välkommen åter när en av" + "\n våra 10 medlemmar har slutat.");
             return;
         }
 
@@ -49,8 +47,7 @@ public class Library {
         int id = Integer.parseInt(IO.readln());
         for (int i = 0; i < membersCounter; i++) {
             if (members[i].getId() == id) {
-                System.out.println("Id´t du angav är upptaget, " +
-                         "vg. börja om för jag har inte gjort någon loop hr för att skriva in nytt id. 😜");
+                System.out.println("Id´t du angav är upptaget, " + "vg. börja om för jag har inte gjort någon loop hr för att skriva in nytt id. 😜");
                 return;
             }
         }
@@ -63,7 +60,7 @@ public class Library {
     }
 
 
-    public void borrowBook(){
+    public void borrowBook() {
         System.out.println("Vem vill låna en bok? ");
         String name = IO.readln();
         // kontrollera om medlem finnns
@@ -73,7 +70,7 @@ public class Library {
             // jag anropar metoden getName från member-objektet och jämför med inskrivet namn.
             if (members[i].getName().equalsIgnoreCase(name)) {
                 member = members[i];
-                break; // break -> sluta leta och fortsätt till borrowBook()
+                break; // break -> medlemmen är hittad, avluta loopen och fortsätt resten av borrowBook()
             }
         }
         if (member == null) {
@@ -85,24 +82,77 @@ public class Library {
             System.out.println("Medlemmen har redan tre lån, hen får inte låna fler böcker.");
             return;
         }
+
         System.out.println("Vilken bok vill du låna? ");
-        String book =  IO.readln();
-        // kontrollera om bok finns
-        // jag ska ha en metod som söker efter titel eller författare
-        // på del av eller hela namnet, kan jag använda den metoden här?
+        String search = IO.readln();
+        // skicka söktexten till findBook(), ta emot alla sökträffar i matches
+        Book[] matches = findBook(search);
+        // borrowBook() räknar hur många träffar findBook() gav
+        int matchesCounter = 0;
+        for (int i = 0; i < matches.length; i++) {
+            if (matches[i] != null) {
+                matchesCounter++;
+            }
+        }
+        // om ingen bok hittades avslutas borrowBook()
+        if (matchesCounter == 0) {
+            System.out.println("Ingen bok hittades.");
+            return;
+        }
+
+        // variabel för den bok som användaren väljer att låna
+        Book selectedBook;
+
+        // om sökningen bara gav en träff behöver användaren inte välja,
+        // den boken ligger då på första platsen i matches-arrayen
+        if (matchesCounter == 1) {
+            selectedBook = matches[0];
+        } else {
+            // går igenom alla träffar i matches och skriva ut dem
+            System.out.println("Flera böcker hittades: ");
+            for (int i = 0; i < matchesCounter; i++) {
+                System.out.println((i + 1) + ". " + matches[i].title() + " - " + matches[i].author());
+            }
+
+            // användaren får välja en av böckerna som hittades
+            // loopen fortsätter tills användaren skriver ett gilltigt nr
+            while (true) {
+                // användaren väljer vilken av träffarna hen vill låna
+                System.out.println("Skriv nr på den boken du vill låna: ");
+                try {
+                    int choice = Integer.parseInt(IO.readln());
+                    // valet måste vara minst 1 och högst antalet sökträffar
+                    if (choice < 1 || choice > matchesCounter) {
+                        System.out.println("Ogilltigt val. Välj mellan 1 och " + matchesCounter + ".");
+                        continue;
+                    }
+
+                    // användarens val börjar på 1, men arrayens index börjar på 0
+                    selectedBook = matches[choice - 1];
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Du måste ange ett nummer.");
+                }
+            }
+        }
+
         // kontrollera om boken är tillgänglig
-        // se till att bok och medlem på nått sätt blir ihopkopplade,, kanske en ny record?
+        // se till att bok och medlem blir ihopkopplade med ett Loan
     }
 
 
-    public Book findBook(String search) {
+    public Book[] findBook(String search) {
+        Book[] matches = new Book[booksCounter];
+        int matchesCounter = 0;
+
         for (int i = 0; i < booksCounter; i++) {
-            if (books[i].title().toLowerCase().contains(search.toLowerCase())
-                || books[i].author().toLowerCase().contains(search.toLowerCase())) {
-                return books[i];
+            if (books[i].title().toLowerCase().contains(search.toLowerCase()) || books[i].author().toLowerCase().contains(search.toLowerCase())) {
+
+                matches[matchesCounter] = books[i];
+                matchesCounter++;
             }
         }
-        return null;
+        return matches;
     }
 }
 
