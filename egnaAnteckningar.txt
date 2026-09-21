@@ -7,8 +7,8 @@
 Jag behöver:
 * En record som representerar en bok
 * En klass som representerar en medlem
-* En klass (Library, huvudklassen som sköter själva biblioteket) som håller arrayer med böcker och medlemmar (fast storlek),
-  samt en array/struktur som håller reda på vilka böcker som är utlånade och till vem.
+* En klass (Library, huvudklassen som sköter själva biblioteket) som håller arrayer med böcker och medlemmar
+  (fast storlek), samt en array/struktur som håller reda på vilka böcker som är utlånade och till vem.
 
   ===================================================================================================================
 
