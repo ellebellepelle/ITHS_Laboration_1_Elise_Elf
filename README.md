@@ -28,7 +28,12 @@
 * Skapar findBook() i Library-klassen för att kunna använda i både borrowBook() och i searchBook()
 ========= Commit ===========
 * Ändrar findBook() så att jag får tillbaka Book[] med alla sökträffar.
-* 
+* Korrigerar borrowBook() för att få tillbaka en array med alla sökresultat
+========= Commit ===========
+* borrowBook() är typ klar, behöver lägga till saker: inmatningar i addBook() och registerMember() 
+  kan kracha om användaren skriver bokstäver där jag kör parseInt()
+* bör testa om 0 träffar, 1 träff, flera träffar, felaktigt boknummer och att försöka
+  låna samma bok två gånger... 
 
 
 

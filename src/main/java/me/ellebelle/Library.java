@@ -137,7 +137,30 @@ public class Library {
         }
 
         // kontrollera om boken är tillgänglig
+        for (int i = 0; i < loansCounter; i++) {
+            if (loans[i].book().equals(selectedBook)) {
+                System.out.println("Boken är redan utlånad.");
+                return;
+            }
+        }
+
+        // kolla så att inte lån-arrayen är full (bör inte vara för jag har bara 10 böcker
+        if (loansCounter >= loans.length) {
+            System.out.println("Det finn inte plat för fler aktiva lån i biblioteket kapacitet.");
+            return;
+        }
         // se till att bok och medlem blir ihopkopplade med ett Loan
+        Loan loan = new Loan(member, selectedBook);
+        // sparar lånet på nästa lediga plats i loans-arrayen
+        loans[loansCounter] = loan;
+        loansCounter++;
+
+        // öka medlemmens antal aktiva lån med 1
+        member.setActiveLoans(member.getActiveLoans() + 1);
+
+        // bekräfta att utlåningen lyckades
+        System.out.println(member.getName() + " har nu lånat " + selectedBook.title() + ".");
+        System.out.println("Antal aktiva lån: " + member.getActiveLoans());
     }
 
 
