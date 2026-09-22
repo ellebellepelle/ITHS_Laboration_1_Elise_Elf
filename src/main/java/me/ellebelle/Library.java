@@ -16,7 +16,6 @@ public class Library {
             System.out.println("Bibliotekets 10 platser i bokhyllan är fyllda." + "\n Det går ej lägga till fler böcker.");
             return;
         }
-
         System.out.println("Ange bokens isbn: ");
         String isbn = IO.readln();
         System.out.println("Ange titel på boken; ");
@@ -29,9 +28,7 @@ public class Library {
             System.out.println("Boken måste ha minst en sida, vad ska vi annas läsa?? 😂");
             return;
         }
-
         Book book = new Book(isbn, title, author, pages);
-
         books[booksCounter] = book;
         booksCounter++;
     }
@@ -42,7 +39,6 @@ public class Library {
             System.out.println("Vår medlemslista är full, välkommen åter när en av" + "\n våra 10 medlemmar har slutat.");
             return;
         }
-
         System.out.println("Ange medlemmens blivande ID-nr:");
         int id = Integer.parseInt(IO.readln());
         for (int i = 0; i < membersCounter; i++) {
@@ -63,8 +59,7 @@ public class Library {
     public void borrowBook() {
         System.out.println("Vem vill låna en bok? ");
         String name = IO.readln();
-        // kontrollera om medlem finnns
-        Member member = null;
+        Member member = null;   // kontrollera om medlem finnns
         for (int i = 0; i < membersCounter; i++) {
             // är members[i]:s namn samma som name som användaren skrev?
             // jag anropar metoden getName från member-objektet och jämför med inskrivet namn.
@@ -77,12 +72,10 @@ public class Library {
             System.out.println("Medlemmen finns inte, du skickas tillbaka till menyn.");
             return; // return -> avsluta hela metoden
         }
-        // kontrollera om medlem har fler än 3 lån
-        if (member.getActiveLoans() >= 3) {
+        if (member.getActiveLoans() >= 3) { // kontrollera om medlem har fler än 3 lån
             System.out.println("Medlemmen har redan tre lån, hen får inte låna fler böcker.");
             return;
         }
-
         System.out.println("Vilken bok vill du låna? ");
         String search = IO.readln();
         // skicka söktexten till findBook(), ta emot alla sökträffar i matches
@@ -99,10 +92,7 @@ public class Library {
             System.out.println("Ingen bok hittades.");
             return;
         }
-
-        // variabel för den bok som användaren väljer att låna
-        Book selectedBook;
-
+        Book selectedBook;  // variabel för den bok som användaren väljer att låna
         // om sökningen bara gav en träff behöver användaren inte välja,
         // den boken ligger då på första platsen i matches-arrayen
         if (matchesCounter == 1) {
@@ -113,20 +103,16 @@ public class Library {
             for (int i = 0; i < matchesCounter; i++) {
                 System.out.println((i + 1) + ". " + matches[i].title() + " - " + matches[i].author());
             }
-
             // användaren får välja en av böckerna som hittades
             // loopen fortsätter tills användaren skriver ett gilltigt nr
             while (true) {
-                // användaren väljer vilken av träffarna hen vill låna
                 System.out.println("Skriv nr på den boken du vill låna: ");
                 try {
                     int choice = Integer.parseInt(IO.readln());
-                    // valet måste vara minst 1 och högst antalet sökträffar
                     if (choice < 1 || choice > matchesCounter) {
                         System.out.println("Ogilltigt val. Välj mellan 1 och " + matchesCounter + ".");
                         continue;
                     }
-
                     // användarens val börjar på 1, men arrayens index börjar på 0
                     selectedBook = matches[choice - 1];
                     break;
@@ -135,7 +121,6 @@ public class Library {
                 }
             }
         }
-
         // kontrollera om boken är tillgänglig
         for (int i = 0; i < loansCounter; i++) {
             if (loans[i].book().equals(selectedBook)) {
@@ -143,22 +128,16 @@ public class Library {
                 return;
             }
         }
-
-        // kolla så att inte lån-arrayen är full (bör inte vara för jag har bara 10 böcker
+        // kolla så att inte lån-arrayen är full (bör inte vara för jag har bara 10 böcker)
         if (loansCounter >= loans.length) {
-            System.out.println("Det finn inte plat för fler aktiva lån i biblioteket kapacitet.");
+            System.out.println("Det finn inte plats för fler aktiva lån i biblioteket kapacitet.");
             return;
         }
-        // se till att bok och medlem blir ihopkopplade med ett Loan
-        Loan loan = new Loan(member, selectedBook);
-        // sparar lånet på nästa lediga plats i loans-arrayen
-        loans[loansCounter] = loan;
+        Loan loan = new Loan(member, selectedBook); // se till att bok och medlem blir ihopkopplade med ett Loan
+        loans[loansCounter] = loan; // sparar lånet på nästa lediga plats i loans-arrayen
         loansCounter++;
 
-        // öka medlemmens antal aktiva lån med 1
-        member.setActiveLoans(member.getActiveLoans() + 1);
-
-        // bekräfta att utlåningen lyckades
+        member.setActiveLoans(member.getActiveLoans() + 1); // öka medlemmens antal aktiva lån med 1
         System.out.println(member.getName() + " har nu lånat " + selectedBook.title() + ".");
         System.out.println("Antal aktiva lån: " + member.getActiveLoans());
     }

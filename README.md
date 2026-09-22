@@ -34,6 +34,10 @@
   kan kracha om användaren skriver bokstäver där jag kör parseInt()
 * bör testa om 0 träffar, 1 träff, flera träffar, felaktigt boknummer och att försöka
   låna samma bok två gånger... 
+========= Commit ===========
+======= Tisdag 22/9 ========
+* 
+
 
 
 
