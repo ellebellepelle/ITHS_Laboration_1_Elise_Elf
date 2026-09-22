@@ -1,3 +1,6 @@
+* korta ner metoder genom att göra metod(er) som kan återanvändas i andra metoder där samma funktionallitet återanvänds.
+
+
 =========== VG!! ============
 
 * Egen sorteringsalgoritm: implementera en egen sorteringsalgoritm (tex. bubble sort eller selection sort)

@@ -264,5 +264,26 @@ public class Library {
             }
         }
     }
+
+
+    public void searchBook() {
+        System.out.println("Vilken bok vill du söka på? \n"
+        + "Ange hela eller del av titel/författare:");
+        String search = IO.readln();
+
+        Book[] matches = findBook(search);
+
+        int matchesCounter = 0;
+
+        for (int i = 0; i < matches.length; i++) {
+            if (matches[i] != null) {
+                matchesCounter++;
+            }
+        }
+        if (matchesCounter == 0) {
+            System.out.println("Ingent sökresultat hittades.");
+            return;
+        }
+    }
 }
 

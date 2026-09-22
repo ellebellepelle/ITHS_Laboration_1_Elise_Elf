@@ -39,5 +39,9 @@
 ========= Commit ===========
 * Skapar returnBook() i Library-klassen samt lägger till den i main-menyn
 ========= Commit ===========
+* Korrigerar egna anteckningar
+========= Commit ===========
+* Skapar searchBook() i Library-klassen samt lägger till den i main-menyn EJ KLAR!
+========= Commit ===========
 
 
