@@ -111,7 +111,7 @@ public class Library {
                     int choice = Integer.parseInt(IO.readln());
                     if (choice < 1 || choice > matchesCounter) {
                         System.out.println("Ogilltigt val. Välj mellan 1 och " + matchesCounter + ".");
-                        continue;
+                        continue; // börja om loopen
                     }
                     // användarens val börjar på 1, men arrayens index börjar på 0
                     selectedBook = matches[choice - 1];
@@ -156,7 +156,113 @@ public class Library {
         }
         return matches;
     }
+
+
+    public void returnBook() {
+        System.out.println("Vilken bok vill du lämna tillbaka? Ange titel: ");
+        String search = IO.readln();
+
+        Loan[] matches = new Loan[loansCounter];
+        int matchesCounter = 0;
+        Loan selectedLoan = null;
+
+        for (int i = 0; i < loansCounter; i++) {
+            if (loans[i].book().title().toLowerCase().contains(search.toLowerCase())) { // ej equalIgnoreCae() här för
+                                                                                        // funkar ej med .contains()
+                matches[matchesCounter] = loans[i];
+                matchesCounter++;
+            }
+        }
+        if (matchesCounter == 0) {
+            System.out.println("Inga böcker med den titlen hittades som utlånad.");
+            return;
+        }
+        if (matchesCounter == 1) {
+            selectedLoan = matches[0];
+        }
+        else {
+            System.out.println("Flera böcker matchade din sökning:");
+            for (int i = 0; i < matchesCounter; i++) {
+                System.out.println(
+                        (i + 1) + ". "
+                        + matches[i].book().title()
+                        + " - lånad av "
+                        + matches[i].member().getName()
+                );
+            }
+            while (true) {
+                System.out.println("Välj det nummer som du vill lämna tillbaka:");
+                try {
+                    int choice = Integer.parseInt(IO.readln());
+                    if (choice < 1 || choice > matchesCounter) {
+                        System.out.println("Ogilltigt val. Välj mellan 1 och " + matchesCounter + ".");
+                        continue;
+                    }
+                    selectedLoan = matches[choice - 1];
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Du måste ange ett nummer.");
+                }
+            }
+        }
+        // anv.bekräftele att boken skall återlämnas
+        System.out.println("""
+                Du vill lämna tillbaka: \n
+                Bok: """ + selectedLoan.book().title());
+        System.out.println("Lånad av: " + selectedLoan.member().getName());
+        while (true) {
+            System.out.println("Vill du slutföra återlämningen? (ja/nej)");
+            String answer = IO.readln();
+            if (answer.equalsIgnoreCase("ja")) {
+                break;
+            }
+            if (answer.equalsIgnoreCase("nej")) {
+                System.out.println("Återlämningen avböts.");
+                return;
+            }
+            System.out.println("Ogiltigt svar. Skriv ja eller nej.");
+        }
+        // ta bort selectedLoan ur loans[] och hanterar tomrummet som blir
+        int loanIndex = -1;
+        for (int i = 0; i < loansCounter; i++) {
+            if (loans[i].equals(selectedLoan)) { // letar upp vilken plat i loans-arrayen återl.boken ligger på
+                loanIndex = i;
+                break;
+            }
+        }
+        // extra felhantering
+        if (loanIndex == -1) {
+            System.out.println("Något gick fel. Lånet kunde inte hitta.");
+            return;
+        }
+        for (int i = loanIndex; i < loansCounter - 1; i++) {
+            loans[i] = loans[i + 1];
+        }
+        loans[loansCounter - 1] = null;
+        loansCounter--;
+        // minska activeLoans med 1, medlemmen finns redan i selectedLoan
+        Member member = selectedLoan.member();
+        member.setActiveLoans(member.getActiveLoans() - 1);
+
+        System.out.println(
+                selectedLoan.book().title()
+                + " är nu återlämnad."
+        );
+        System.out.println(
+                member.getName()
+                + " har nu "
+                + member.getActiveLoans()
+                + " aktiva lån."
+        );
+        // visa vilka återstående aktiva lån member:n har
+        if (member.getActiveLoans() > 0) {
+            System.out.println("Böcker som fortfarande är lånade:");
+            for (int i = 0; i < loansCounter; i++) {
+                if (loans[i].member().equals(member)) {
+                    System.out.println("- " + loans[i].book().title());
+                }
+            }
+        }
+    }
 }
-
-
 

@@ -38,7 +38,7 @@ public class Main {
                         malmoLibrary.borrowBook();
                         break;
                     case 4:
-                        System.out.println("val 4");
+                        malmoLibrary.returnBook();
                         break;
                     case 5:
                         System.out.println("val 5");
