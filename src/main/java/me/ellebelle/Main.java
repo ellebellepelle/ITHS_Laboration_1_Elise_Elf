@@ -48,14 +48,17 @@ public class Main {
                         malmoLibrary.showBook();
                         break;
                     case 7:
+                        malmoLibrary.showStatistics();
+                        break;
+                    case 8:
                         condition = false;
                         break;
                     default:
-                        System.out.println("Ogilltigt val, vg. välj 1-7");
+                        System.out.println("Ogilltigt val, vg. välj 1-8");
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("Ogilltigt val, du måste skriva ett heltal mellan 1-7.");
+                System.out.println("Ogilltigt val, du måste skriva ett heltal mellan 1-8.");
             }
         } while (condition);
     }

@@ -64,6 +64,10 @@
 ========= Commit ===========
 * Lägger till bubble-sort i showBook() metoden.
 ========= Commit ===========
+* Lägger till showStatistics() i Library-klassen samt ett nytt menyval i main-menyn
+* Anropar även registerMember() från denna metod.
+* Kunde lagt till att om ingen medlem har några lån så skriv dem inte ut men får se om jag hinner det sen. 
+========= Commit ===========
 
 
 

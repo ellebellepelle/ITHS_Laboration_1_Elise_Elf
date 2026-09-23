@@ -323,5 +323,41 @@ public class Library {
             }
         }
     }
+
+
+    public void showStatistics() {
+        if (membersCounter == 0) {
+            while (true) {
+                System.out.println("Det finns inga medlemmar i vårat bibliotek, vill du bli medlem? ja/nej");
+                String answer = IO.readln();
+                if (answer.equalsIgnoreCase("ja")) {
+                    registerMember();
+                    break;
+                }
+                else if (answer.equalsIgnoreCase("nej")) {
+                    System.out.println("Okej tack då och adjö.");
+                    return;
+                } else {
+                    System.out.println("Ogiltigt svar. Skriv ja eller nej.");
+                }
+            }
+        }
+        Member mostLoans = members[0]; // antar att melemmen på plats [0] har flest lån.
+        for (int i = 1; i < membersCounter; i++) {
+            if (members[i].getActiveLoans() > mostLoans.getActiveLoans()) {
+                mostLoans = members[i];
+            }
+        }
+        System.out.println("Medlem/medlemmar med flest aktiva lån:");
+        for (int i = 0; i < membersCounter; i++) {
+            if (members[i].getActiveLoans() == mostLoans.getActiveLoans()) {
+                System.out.println(members[i].getName()
+                + " - "
+                + members[i].getActiveLoans()
+                + " aktiva lån."
+                );
+            }
+        }
+    }
 }
 
