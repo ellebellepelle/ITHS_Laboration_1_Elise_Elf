@@ -46,7 +46,9 @@
 ======= Onsdag 23/9 ========
 * searchBook() klar
 ========= Commit ===========
-* 
+* Skapar showBook() i Library-klassen samt lägger till den i main-menyn
+========= Commit ===========
+
 
 
 

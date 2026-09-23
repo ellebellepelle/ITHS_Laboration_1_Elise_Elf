@@ -282,8 +282,21 @@ public class Library {
             }
         }
         if (!found) {
-            System.out.println("Det var alla dina sökningar.");
+            System.out.println("Det fanns inga sökningar som matchade.");
         }
+    }
+
+
+    public void showBook() {
+        if (booksCounter == 0) {
+            System.out.println("Det finns inga böcker i bibliotekets hyllor 😪");
+            return;
+        }
+        System.out.println("Här är alla böcker som finns på biblioteket: ");
+        for (int i = 0; i < booksCounter; i++) {
+                System.out.println(books[i]);
+            }
+
     }
 }
 

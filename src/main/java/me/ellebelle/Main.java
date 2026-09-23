@@ -44,7 +44,7 @@ public class Main {
                         malmoLibrary.searchBook();
                         break;
                     case 6:
-                        System.out.println("val 6");
+                        malmoLibrary.showBook();
                         break;
                     case 7:
                         condition = false;
