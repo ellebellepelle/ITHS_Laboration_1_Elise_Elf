@@ -2,14 +2,18 @@
   skulle varit att ha två arrayer (Book[] books; och Member[] borrowedBy;) som skulle hört ihop
   med varandra genom att de skulle haft samma index. dvs: public record Loan(Book book, Member member) {}
   På detta sätt blir en bok och medlemmen som lånat den ihopkopplade i ett enda objekt.
+* Record använd även för Book() då bokens information inte är tänkt att ändras efter att den väl är satt.
+  Ett record ger mig en färdig klass på ett smidigt sätt med färdig-implementerade metoder.
 * Väljer att använda String till isbn eftersom isbn startar med 0 och då kan jag inte ha en int.
 * Väljer att lägga till pages i Book-objekten för att alla andra parametrar är String och jag vill även ha med en int.
-* Book-objekten är record för att det inte skall kunna gå att ändra dess data.
 * Member-objekten är en klass som jag har gjort för att datan skall kunna gå att ändras.
   Den innehåller bla både getters och setters för att jag skall kunna både hämta värden och sätta nya värden
   om någon ex byter namn eller lånar fler böcker. 
   Id är dock final för att det inte skall kunna gå att ändra. Därmed behöver jag inte setId.
   Jag sätter activeLoans till 0 och har inte med den i konstruktorn eftersom att när en medlem skapas har den inga lån.
+  Jag har min egengjorda metod här maxNumOfBorrowedBooks() som används i borrowBook() för att se att användaren inte har
+  lånat fler än 3 böcker. 
+* I Library-klassen finns metoden findBook() som används i både borrowBook() och searchBook() metoderna.
 
 ======= Fredag 18/9 ========
 * Library-klassen får två Arrays med 10 platser var för att kunna lagra medlemmar och böcker.
@@ -48,7 +52,11 @@
 ========= Commit ===========
 * Skapar showBook() i Library-klassen samt lägger till den i main-menyn
 ========= Commit ===========
-
+* provkör programmet för att hitta buggar. Hittade att addBook() inte hade felhantering för om annat än siffror skrevs
+  in vid antal sidor i boken. Min extra felhantering i main-menyn fångade Exceptionet men jag har nu ändrat så att 
+  addBook() själv hanterar det med en try/catch.
+* Lade till i searchBook() att när alla böcker i biblioteket visas så visas även utlåningsstatus.
+========= Commit ===========
 
 
 

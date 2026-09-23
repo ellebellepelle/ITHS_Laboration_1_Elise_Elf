@@ -30,7 +30,7 @@ public class Member {
         this.activeLoans = activeLoans;
     }
 
-    public boolean maxNumOfBorroedBooks() {
-        return activeLoans > 3;
+    public boolean maxNumOfBorrowedBooks() {
+        return activeLoans >= 3;
     }
 }

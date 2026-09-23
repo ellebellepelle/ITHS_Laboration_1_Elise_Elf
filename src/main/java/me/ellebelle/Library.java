@@ -23,7 +23,13 @@ public class Library {
         System.out.println("Ange bokens författare: ");
         String author = IO.readln();
         System.out.println("Ange antal boksidor: ");
-        int pages = Integer.parseInt(IO.readln());
+        int pages;
+        try {
+            pages = Integer.parseInt(IO.readln());
+        } catch (NumberFormatException e) {
+            System.out.println("Antalet sidor måste anges med ett heltal.");
+            return;
+        }
         if (pages <= 0) {
             System.out.println("Boken måste ha minst en sida, vad ska vi annas läsa?? 😂");
             return;
@@ -72,7 +78,7 @@ public class Library {
             System.out.println("Medlemmen finns inte, du skickas tillbaka till menyn.");
             return; // return -> avsluta hela metoden
         }
-        if (member.getActiveLoans() >= 3) { // kontrollera om medlem har fler än 3 lån
+        if (member.maxNumOfBorrowedBooks()) { // kontrollera om medlem har fler än 3 lån
             System.out.println("Medlemmen har redan tre lån, hen får inte låna fler böcker.");
             return;
         }
@@ -159,7 +165,7 @@ public class Library {
 
 
     public void returnBook() {
-        System.out.println("Vilken bok vill du lämna tillbaka? Ange titel: ");
+        System.out.println("Vilken bok vill du lämna tillbaka? Ange hela eller del av titel: ");
         String search = IO.readln();
 
         Loan[] matches = new Loan[loansCounter];
@@ -168,7 +174,7 @@ public class Library {
 
         for (int i = 0; i < loansCounter; i++) {
             if (loans[i].book().title().toLowerCase().contains(search.toLowerCase())) { // ej equalIgnoreCae() här för
-                                                                                        // funkar ej med .contains()
+                // funkar ej med .contains()
                 matches[matchesCounter] = loans[i];
                 matchesCounter++;
             }
@@ -179,15 +185,14 @@ public class Library {
         }
         if (matchesCounter == 1) {
             selectedLoan = matches[0];
-        }
-        else {
+        } else {
             System.out.println("Flera böcker matchade din sökning:");
             for (int i = 0; i < matchesCounter; i++) {
                 System.out.println(
                         (i + 1) + ". "
-                        + matches[i].book().title()
-                        + " - lånad av "
-                        + matches[i].member().getName()
+                                + matches[i].book().title()
+                                + " - lånad av "
+                                + matches[i].member().getName()
                 );
             }
             while (true) {
@@ -246,13 +251,13 @@ public class Library {
 
         System.out.println(
                 selectedLoan.book().title()
-                + " är nu återlämnad."
+                        + " är nu återlämnad."
         );
         System.out.println(
                 member.getName()
-                + " har nu "
-                + member.getActiveLoans()
-                + " aktiva lån."
+                        + " har nu "
+                        + member.getActiveLoans()
+                        + " aktiva lån."
         );
         // visa vilka återstående aktiva lån member:n har
         if (member.getActiveLoans() > 0) {
@@ -268,7 +273,7 @@ public class Library {
 
     public void searchBook() {
         System.out.println("Vilken bok vill du söka på? \n"
-        + "Ange hela eller del av titel/författare:");
+                + "Ange hela eller del av titel/författare:");
         String search = IO.readln();
 
         Book[] matches = findBook(search);
@@ -294,9 +299,20 @@ public class Library {
         }
         System.out.println("Här är alla böcker som finns på biblioteket: ");
         for (int i = 0; i < booksCounter; i++) {
-                System.out.println(books[i]);
-            }
+            Book book = books[i];
+            boolean borrowed = false;
 
+            for (int j = 0; j < loansCounter; j++) {
+                if (loans[j].book().equals(book)) {
+                    System.out.println(book + " - Utlånad till: " + loans[j].member().getName());
+                    borrowed = true;
+                    break;
+                }
+            }
+            if (!borrowed) {
+                System.out.println(book + " - Tillgänglig");
+            }
+        }
     }
 }
 

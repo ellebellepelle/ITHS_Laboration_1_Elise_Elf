@@ -21,6 +21,7 @@ public class Main {
                     5. Sök bok (titel eller författare, del av eller hela ordet.).
                     6. Visa alla böcker.
                     7. Avsluta.
+                    ======================================================
                     """);
 
             try {
