@@ -15,6 +15,11 @@
   lånat fler än 3 böcker. 
 * I Library-klassen finns metoden findBook() som används i både borrowBook() och searchBook() metoderna.
 
+========= VG ============
+* Väljer att använda bubble-sort i showBook() för att den är relativt enkel att förstå som nybörjare och den skall bara 
+  sortera liten mängd data. Jag gör ingen kopia av arrayen eftersom jag ändå använder booksCounter så det kommer inte 
+  sorteras några null-platser. 
+
 ======= Fredag 18/9 ========
 * Library-klassen får två Arrays med 10 platser var för att kunna lagra medlemmar och böcker.
   samt fält för att räkna dess platser. 
@@ -56,6 +61,8 @@
   in vid antal sidor i boken. Min extra felhantering i main-menyn fångade Exceptionet men jag har nu ändrat så att 
   addBook() själv hanterar det med en try/catch.
 * Lade till i searchBook() att när alla böcker i biblioteket visas så visas även utlåningsstatus.
+========= Commit ===========
+* Lägger till bubble-sort i showBook() metoden.
 ========= Commit ===========
 
 

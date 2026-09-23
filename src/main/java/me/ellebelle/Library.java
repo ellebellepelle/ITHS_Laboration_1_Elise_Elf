@@ -297,6 +297,15 @@ public class Library {
             System.out.println("Det finns inga böcker i bibliotekets hyllor 😪");
             return;
         }
+        for (int i = 0; i < booksCounter - 1; i++) {
+            for (int j = 0; j < booksCounter - 1 - i; j++) {
+                if (books[j].title().compareToIgnoreCase(books[j + 1].title()) > 0) {
+                    Book temp = books[j];
+                    books[j] = books[j + 1];
+                    books[j + 1] = temp;
+                }
+            }
+        }
         System.out.println("Här är alla böcker som finns på biblioteket: ");
         for (int i = 0; i < booksCounter; i++) {
             Book book = books[i];
