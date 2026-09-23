@@ -273,16 +273,16 @@ public class Library {
 
         Book[] matches = findBook(search);
 
-        int matchesCounter = 0;
+        boolean found = false;
 
         for (int i = 0; i < matches.length; i++) {
             if (matches[i] != null) {
-                matchesCounter++;
+                System.out.println(matches[i]);
+                found = true;
             }
         }
-        if (matchesCounter == 0) {
-            System.out.println("Ingent sökresultat hittades.");
-            return;
+        if (!found) {
+            System.out.println("Det var alla dina sökningar.");
         }
     }
 }

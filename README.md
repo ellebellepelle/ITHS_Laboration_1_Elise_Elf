@@ -43,5 +43,10 @@
 ========= Commit ===========
 * Skapar searchBook() i Library-klassen samt lägger till den i main-menyn EJ KLAR!
 ========= Commit ===========
+======= Onsdag 23/9 ========
+* searchBook() klar
+========= Commit ===========
+* 
+
 
 
