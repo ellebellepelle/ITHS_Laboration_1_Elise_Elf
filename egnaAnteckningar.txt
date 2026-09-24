@@ -1,7 +1,0 @@
-=========== VG!! ============
-
-
-
-* Reflektion i README.md:
-    utöka reflektionen med en kort diskussion av varför/hur jag hade löst uppgiften enklare eller annorlunda
-    om Collections Framework redan var tillåtet - visa att jag förstår begränsningen som en medveten övning.
