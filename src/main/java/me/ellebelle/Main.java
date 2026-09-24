@@ -20,7 +20,8 @@ public class Main {
                     4. Lämna tillbaka bok.
                     5. Sök bok (titel eller författare, del av eller hela ordet.).
                     6. Visa alla böcker.
-                    7. Avsluta.
+                    7. Visa medlem/medlemmar med flest aktiva lån.
+                    8. Avsluta.
                     ======================================================
                     """);
 

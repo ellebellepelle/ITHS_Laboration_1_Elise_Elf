@@ -77,6 +77,9 @@
 * ========= Commit ===========
 * Ändrar min loans-array så den med blir dynamisk
 * ========= Commit ===========
+* Fixar menyn i main så alternativ 7 och 8 blir rätt.
+* ========= Commit ===========
+
 
 
 * === EGEN REFLEKTION ===
@@ -87,5 +90,6 @@
 * I borrowBook() måste korrekt namn skrivas för att hitta medlemmen, här kunde jag gjort som andra metoder att jag 
 sökte på del av namn och lät användaren välja.
 * Snyggat till utskrifterna när alla böcker visas i konsollen
+* Fixat så att inte alla medlemmar skrevs ut när ingen av dem hade "flest" antal lån
 
 
