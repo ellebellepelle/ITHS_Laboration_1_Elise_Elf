@@ -144,10 +144,13 @@ public class Library {
                 return;
             }
         }
-        // kolla så att inte lån-arrayen är full (bör inte vara för jag har bara 10 böcker)
+        // gör dynamisk så jag kan låna ut fler böcker eftersom jag nu kan ha fler än 10 members och böcker
         if (loansCounter >= loans.length) {
-            System.out.println("Det finn inte plats för fler aktiva lån i biblioteket kapacitet.");
-            return;
+            Loan[] newLoans = new Loan[loans.length * 2];
+            for (int i = 0; i < loansCounter; i++) {
+                newLoans[i] = loans[i];
+            }
+            loans = newLoans;
         }
         Loan loan = new Loan(member, selectedBook); // se till att bok och medlem blir ihopkopplade med ett Loan
         loans[loansCounter] = loan; // sparar lånet på nästa lediga plats i loans-arrayen

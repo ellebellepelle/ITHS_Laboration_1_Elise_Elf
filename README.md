@@ -19,6 +19,7 @@
 * Väljer att använda bubble-sort i showBook() för att den är relativt enkel att förstå som nybörjare och den skall bara 
   sortera liten mängd data. Jag gör ingen kopia av arrayen eftersom jag ändå använder booksCounter så det kommer inte 
   sorteras några null-platser. 
+* Eftersom att jag gjorde min books och members arrayer dynamiska så väljer jag även att göra loans-arrayen dynamisk.
 
 ======= Fredag 18/9 ========
 * Library-klassen får två Arrays med 10 platser var för att kunna lagra medlemmar och böcker.
@@ -71,7 +72,8 @@
 ======= Torsdag 24/9 ========
 * Ändrar mina två arrayer (books och members) i metoderna addBook() och registerMember(), så att de blir dynamiska.
 ========= Commit ===========
-
+* Ändrar min loans-array så den med blir dynamisk
+========= Commit ===========
 
 
 
