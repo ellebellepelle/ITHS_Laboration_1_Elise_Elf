@@ -79,4 +79,13 @@
 * ========= Commit ===========
 
 
+* === EGEN REFLEKTION ===
+* Förbättringar som upptäcktes vid provkörning och kunde genomförts men som inte var krav för uppgiften:
+* Lägga till bekräftelse att bok är tillagd i addBook()
+* Lagt till menyval med tillhörande funktion för att visa alla aktiva medlemmar samt dess antal lån
+* Lagt till bekräftelse att medlem är tillagd i registerMember()
+* I borrowBook() måste korrekt namn skrivas för att hitta medlemmen, här kunde jag gjort som andra metoder att jag 
+sökte på del av namn och lät användaren välja.
+* Snyggat till utskrifterna när alla böcker visas i konsollen
+
 
