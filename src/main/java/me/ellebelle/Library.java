@@ -11,10 +11,15 @@ public class Library {
 
 
     public void addBook() {
-        // Kontroll (före användarinmatning) för att inte överskrida arrayens längd.
+        // Kontroll, om books-arrayen är full skapa en dubbelt så stor array.
         if (booksCounter >= books.length) {
-            System.out.println("Bibliotekets 10 platser i bokhyllan är fyllda." + "\n Det går ej lägga till fler böcker.");
-            return;
+            Book[] newBooks = new Book[books.length * 2];
+            // kopierar över alla böcker från gamla arrayen
+            for (int i = 0; i < booksCounter; i++) {
+                newBooks[i] = books[i];
+            }
+            // books ska nu peka på den större arrayen
+            books = newBooks;
         }
         System.out.println("Ange bokens isbn: ");
         String isbn = IO.readln();
@@ -40,10 +45,15 @@ public class Library {
     }
 
     public void registerMember() {
-        // Kontroll (före användarinmatning) för att inte överskrida arrayens längd.
+        // Kontroll, om members-arrayen blir full skapas en dubbelt så stor array.
         if (membersCounter >= members.length) {
-            System.out.println("Vår medlemslista är full, välkommen åter när en av" + "\n våra 10 medlemmar har slutat.");
-            return;
+            Member[] newMembers = new Member[members.length * 2];
+            // kopierar över alla medlemmar från gamla arrayen
+            for (int i = 0; i < membersCounter; i++) {
+                newMembers[i] = members[i];
+            }
+            // members pekar nu på den större arrayen
+            members = newMembers;
         }
         System.out.println("Ange medlemmens blivande ID-nr:");
         int id = Integer.parseInt(IO.readln());

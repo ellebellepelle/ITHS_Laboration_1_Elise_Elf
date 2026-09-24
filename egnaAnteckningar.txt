@@ -1,17 +1,6 @@
-* korta ner metoder genom att göra metod(er) som kan återanvändas i andra metoder där samma funktionallitet återanvänds.
-
-
 =========== VG!! ============
 
-* Egen sorteringsalgoritm: implementera en egen sorteringsalgoritm (tex. bubble sort eller selection sort)
-  INTE Arrays.sort() eller Collections.sort() - som sorterar böckerna i bokstavsordning på titel för menyval 6.
 
-* Statistik:
-    en funktion som (utan Streams/Collections) hittar och visar den medlem som för tillfället har flest aktiva lån.
-
-* Dynamisk kapacitet:
-    om bok- eller medlemsarraen blir fulla ska programmet skapa en ny, större array,
-    kopiera över befintliga element och fortsätta (manuell array-väsling, utan att använda ArrayList).
 
 * Reflektion i README.md:
     utöka reflektionen med en kort diskussion av varför/hur jag hade löst uppgiften enklare eller annorlunda

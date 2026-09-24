@@ -68,6 +68,10 @@
 * Anropar även registerMember() från denna metod.
 * Kunde lagt till att om ingen medlem har några lån så skriv dem inte ut men får se om jag hinner det sen. 
 ========= Commit ===========
+======= Torsdag 24/9 ========
+* Ändrar mina två arrayer (books och members) i metoderna addBook() och registerMember(), så att de blir dynamiska.
+========= Commit ===========
+
 
 
 
